@@ -21,14 +21,35 @@ This project implements a conversational agent, designed to answer questions rel
 
 ### Setup and Execution Instructions 
 
-1.  Modify the .env file, adding your openai api key
-2.  **Build and Run the Docker Container**: Once the `run.ps1` script completes, it will automatically build the Docker image and provide the final command to run the container. You must provide your OpenAI API key as an environment variable in the command.
+1. clone this repository
+    ```bash
+    git clone https://github.com/user/analytING.git
+    ```
+2.  Modify the .env file, adding your openai api key
+3.  **Build and Run the Docker Container**: Once the `run.ps1` script completes, it will automatically build the Docker image and provide the final command to run the container. You must provide your OpenAI API key as an environment variable in the command.
     ```bash
     docker run -it --rm -e OPENAI_API_KEY="YOUR_API_KEY" -p 8000:8000 chatbot-app
     ```
-3.  **Access the API**: The API will be available at `http://localhost:8000`. You can test the endpoints using a tool like Postman or `curl`. The agent is configured to answer in **Spanish** and will indicate the data source used for each response, including a tabular breakdown where applicable.
+4.  **Access the API**: The API will be available at `http://localhost:8000`. You can test the endpoints using a tool like Postman or `curl`. The agent is configured to answer in **Spanish** and will indicate the data source used for each response, including a tabular breakdown where applicable.
 
+4. ### Querying the API
 
+To query the API, you can use a `curl` command to send a POST request to the `/chat/` endpoint with your question in the `query` parameter. Make sure to URL-encode your question to handle spaces and special characters.
+
+**Example using `curl`:**
+
+To ask about the consumption of a customer named "Juan Perez", you would use the following command:
+
+```bash
+curl -X POST "http://localhost:8000/chat/?query=cual%20es%20el%20consumo%20de%20Juan%20Perez%3F" -H "accept: application/json"
+```
+
+To find the field activities for a customer with the ID d21ed, you can use this command:
+
+```bash
+curl -X POST "http://localhost:8000/chat/?query=Que%20actividades%20de%20campo%20se%20han%20realizado%20para%20el%20cliente%20con%20el%20ID%20de%20acuerdo%20d21ed%3F" -H "accept: application/json"
+
+```
 ## Estructura de Archivos
 
 ```
