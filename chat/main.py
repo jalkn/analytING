@@ -35,7 +35,7 @@ async def chat_endpoint(query: str):
     input_message = {"query": query, "chat_history": [], "intermediate_steps": []}
     response = agent.invoke(input_message)
     
-    # Extracting the final answer from the agent's response
+    # Extract the final answer from the agent's response
     final_answer = response.get("final_answer", "No se pudo generar una respuesta. Por favor, reformula la pregunta.")
     
     return {"response": final_answer}

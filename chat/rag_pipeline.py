@@ -15,7 +15,7 @@ class AgentState(TypedDict):
     intermediate_steps: Annotated[List[BaseMessage], operator.add]
     final_answer: str
 
-# Defining the nodes of the graph
+# Define the nodes of the graph
 def call_model(state, tools):
     """
     Node to invoke the LLM with the current query and history.
@@ -24,7 +24,7 @@ def call_model(state, tools):
     history = state.get('chat_history', [])
     intermediate_steps = state.get('intermediate_steps', [])
     
-    # Creating the prompt for the LLM
+    # Create the prompt for the LLM
     prompt = ChatPromptTemplate.from_messages([
         ("system", "Eres un asistente conversacional útil diseñado para responder preguntas sobre datos de clientes, consumo y actividades de campo. Utiliza las herramientas disponibles para responder. Responde siempre en español. Si las herramientas no proporcionan la información, responde de manera cortés indicando que no tienes la información."),
         ("placeholder", "{chat_history}"),
@@ -83,15 +83,15 @@ def create_rag_pipeline(tools):
     """
     tool_executor = ToolExecutor(tools)
     
-    # Building the graph
+    # Build the graph
     workflow = StateGraph(AgentState)
     
-    # Adding nodes
+    # Add nodes
     workflow.add_node("call_model", lambda state: call_model(state, tools))
     workflow.add_node("call_tool", lambda state: call_tool(state, tool_executor))
     workflow.add_node("final_answer_node", final_answer_node)
 
-    # Setting up the entry point and edges
+    # Set up the entry point and edges
     workflow.set_entry_point("call_model")
     workflow.add_conditional_edges(
         "call_model",

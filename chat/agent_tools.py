@@ -9,7 +9,7 @@ def get_db_connection():
 @tool
 def query_customer_master(id_acuerdo: str):
     """
-    Consultar la información del cliente por número de acuerdo.
+    Consulta la información del cliente por número de acuerdo.
     """
     conn = get_db_connection()
     query = f"SELECT * FROM maestro WHERE id_acuerdo = '{id_acuerdo}'"
@@ -22,7 +22,7 @@ def query_customer_master(id_acuerdo: str):
 @tool
 def query_consumption_records(id_acuerdo: str):
     """
-    Consultar el historial de consumo de un cliente por número de acuerdo, incluyendo los detalles del cliente.
+    Consulta el historial de consumo de un cliente por número de acuerdo, incluyendo los detalles del cliente.
     """
     conn = get_db_connection()
     query = f"""
@@ -43,7 +43,7 @@ def query_consumption_records(id_acuerdo: str):
 @tool
 def query_field_activities(id_acuerdo: str):
     """
-    Consultar las actividades de campo de un cliente por número de acuerdo, uniendo con el punto de servicio.
+    Consulta las actividades de campo de un cliente por número de acuerdo, uniendo con el punto de servicio.
     """
     conn = get_db_connection()
     query = f"""
