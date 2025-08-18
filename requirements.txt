@@ -1,0 +1,11 @@
+python-dotenv
+pydantic
+langchain-core
+fastapi
+uvicorn
+pandas
+SQLAlchemy
+openai
+langgraph==0.0.40
+langchain
+langchain-openai

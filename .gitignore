@@ -1,0 +1,9 @@
+*.pyc
+__pycache__
+.venv
+.env
+.vscode
+.DS_store
+src/
+run.ps1
+datos.sqlite
