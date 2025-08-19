@@ -1,6 +1,6 @@
 ## analytING
 
-This project implements a conversational agent, designed to answer questions related to customer master data, consumption, and field activities. The agent uses a **Retrieval-Augmented Generation (RAG)** approach with **LangGraph** to ground its answers in provided datasets and a PDF document. The solution is containerized using **Docker** and exposes a **REST API** via **FastAPI**.
+This project implements a conversational agent, designed to answer questions related to customer master data, consumption, and field activities. The agent uses a **Retrieval-Augmented Generation (RAG)** approach with **LangGraph** to ground its answers in provided datasets. The solution is containerized using **Docker** and exposes a **REST API** via **FastAPI**.
 
 ### Key Components
 
@@ -16,8 +16,6 @@ This project implements a conversational agent, designed to answer questions rel
 * **`requirements.txt`**: This file lists all necessary Python dependencies for the project, including `langgraph`, `fastapi`, and `pypdf`, among others.
 
 ---
-
-### File Structure 
 
 ### Setup and Execution Instructions 
 
@@ -48,12 +46,12 @@ To find the field activities for a customer with the ID d21ed, you can use this 
 
 ```bash
 curl -X POST "http://localhost:8000/chat/?query=Que%20actividades%20de%20campo%20se%20han%20realizado%20para%20el%20cliente%20con%20el%20ID%20de%20acuerdo%20d21ed%3F" -H "accept: application/json"
-
-```
-## Estructura de Archivos
-
 ```
 
+
+### File Structure 
+
+```
 /
 ├── .venv/
 ├── chat/
