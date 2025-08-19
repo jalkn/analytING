@@ -5,14 +5,21 @@ This project implements a conversational agent, designed to answer questions rel
 ### Key Components
 
 * **`Dockerfile`**: A Dockerfile that creates a self-contained image. It installs all dependencies, copies the application code, and sets up the Uvicorn server to run the FastAPI application. The container is designed to run locally with no complex setup steps beyond `docker run`.
+
 * **`chat/main.py`**: The entry point for the FastAPI application. This file defines the API endpoints and orchestrates the interaction with the conversational agent logic.
+
 * **`chat/`**: This directory contains the core business logic of the agent.
-    * **`agent_tools.py`**: Implements the functions (tools) that the LangGraph agent uses to query the provided datasets and the CREG Resolution 105 PDF. These tools are designed to answer questions about customer master data, consumption records, and field activities. The implementation includes the required joins for customer master and consumption data by `id_acuerdo`, and customer master and activities by `id_punto_servicio`.
-    * **`rag_pipeline.py`**: Defines the LangGraph agent's architecture, including its state and the RAG pipeline. It integrates the LLM with the search and query tools to generate grounded responses.
+
+* **`agent_tools.py`**: Implements the functions (tools) that the LangGraph agent uses to query the provided datasets and the CREG Resolution 105 PDF. These tools are designed to answer questions about customer master data, consumption records, and field activities. The implementation includes the required joins for customer master and consumption data by `id_acuerdo`, and customer master and activities by `id_punto_servicio`.
+
+* **`rag_pipeline.py`**: Defines the LangGraph agent's architecture, including its state and the RAG pipeline. It integrates the LLM with the search and query tools to generate grounded responses.
+
 * **`src/`**: This directory holds all the provided datasets in CSV format.
-* **`assets/`**: This directory holds the CREG Resolution 105 PDF, which is used by the agent to answer regulatory questions.
+
 * **`datos.sqlite`**: A SQLite database containing a copy of the provided datasets (customer master, consumption, and field activities).
+
 * **`LLM_Connection.py`**: A module for securely managing and connecting to the external LLM endpoint using an API key from the environment variables.
+
 * **`requirements.txt`**: This file lists all necessary Python dependencies for the project, including `langgraph`, `fastapi`, and `pypdf`, among others.
 
 ---
